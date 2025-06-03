@@ -6,7 +6,7 @@
   "module": "dist/index.esm.js",
   "scripts": {
     "build": "rollup -c",
-    "serve": "live-server --open=public/example.html --host=127.0.0.1 --port=8080 --mount=/dist:dist"
+    "start": "live-server --open=public/example.html --host=127.0.0.1 --port=8080 --mount=/dist:dist"
   },
   "dependencies": {
     "json-rpc-2.0": "^1.7.0",
