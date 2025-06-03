@@ -55,7 +55,7 @@ npm install
 npm run build
 
 # 예제 서버 실행
-npm run serve
+npm run start
 ```
 
 ## 프로젝트 구조
