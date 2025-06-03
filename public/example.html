@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JSON-RPC Browser Lib Demo</title>
+  </head>
+  <body>
+    <h1>JSON-RPC Browser Library Demo</h1>
+    <button id="httpBtn">Call HTTP add(2,3)</button><br /><br />
+    <button id="wsBtn">Call WebSocket add(4,5)</button><br /><br />
+    <button id="bcBtn">Call BroadcastChannel add(6,7)</button><br /><br />
+    <div id="output"></div>
+
+    <script type="module">
+      import {
+        HttpTransport,
+        WebSocketTransport,
+        BroadcastChannelTransport,
+        RpcContext,
+      } from "../dist/index.esm.js";
+
+      const output = document.getElementById("output");
+
+      const httpTransport = new HttpTransport("http://localhost:3000/rpc");
+      const rpcHttp = new RpcContext(httpTransport);
+      document.getElementById("httpBtn").onclick = () => {
+        rpcHttp
+          .request("add", { a: 2, b: 3 })
+          .then((res) => {
+            output.innerText = "[HTTP] 2+3=" + res;
+          })
+          .catch(console.error);
+      };
+
+      const wsTransport = new WebSocketTransport("ws://localhost:3001");
+      const rpcWs = new RpcContext(wsTransport);
+      document.getElementById("wsBtn").onclick = () => {
+        rpcWs
+          .request("add", { a: 4, b: 5 })
+          .then((res) => {
+            output.innerText = "[WS] 4+5=" + res;
+          })
+          .catch(console.error);
+      };
+
+      const bcTransport = new BroadcastChannelTransport("demo_channel");
+      const rpcBc = new RpcContext(bcTransport);
+      document.getElementById("bcBtn").onclick = () => {
+        rpcBc
+          .request("add", { a: 6, b: 7 })
+          .then((res) => {
+            output.innerText = "[BC] 6+7=" + res;
+          })
+          .catch(console.error);
+      };
+    </script>
+  </body>
+</html>

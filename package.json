@@ -1,0 +1,27 @@
+{
+  "name": "jsonrpc-browser-lib",
+  "version": "1.0.0",
+  "description": "Browser-compatible JSON-RPC 2.0 library with pluggable transport layers",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "scripts": {
+    "build": "rollup -c",
+    "serve": "live-server --open=public/example.html --host=127.0.0.1 --port=8080 --mount=/dist:dist"
+  },
+  "dependencies": {
+    "json-rpc-2.0": "^1.7.0",
+    "live-server": "^1.2.2",
+    "rollup": "^2.79.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "ws": "^8.18.2"
+  }
+}
